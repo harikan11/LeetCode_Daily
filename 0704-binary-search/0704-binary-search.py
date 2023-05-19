@@ -1,10 +1,15 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        if target not in nums:
-            return -1
+        low=0
+        high=len(nums)-1
         
-        index=0
-        while nums[index]!=target:
-            index+=1
-        return index
-            
+        while low<=high:
+            mid=(low+high)//2
+            if nums[mid]==target:
+                return mid
+            if target>nums[mid]:
+                low=mid+1
+            else:
+                high=mid-1
+        return -1
+        
