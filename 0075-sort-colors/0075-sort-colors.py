@@ -24,4 +24,7 @@ class Solution:
             nums[i] = 2
             i += 1
             cnt2 -= 1
+            
+                
+            
         
