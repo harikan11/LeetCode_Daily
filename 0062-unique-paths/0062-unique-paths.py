@@ -1,10 +1,15 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        myList = [[1 for x in range(n)] for x in range(m)]
-
-        for i in range(1, m):
-            for j in range(1, n):
-                myList[i][j] = myList[i-1][j] + myList[i][j-1]
-
-    # Return result for last cell
-        return myList[-1][-1]
+        row=[1]*n #length of number of rows(n) x 1
+        
+        for i in range(m-1):
+            newRow=[1]*n
+            for j in range(n-2,-1,-1):
+                newRow[j]=newRow[j+1]+row[j]
+            row=newRow
+        return row[0]
+                
+        
+         
+            
+        
