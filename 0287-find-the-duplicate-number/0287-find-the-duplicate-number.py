@@ -14,5 +14,3 @@ class Solution:
             if slow==slow1:
                 break
         return slow
-     
-  
