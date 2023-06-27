@@ -4,7 +4,6 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
-
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         
@@ -22,5 +21,3 @@ class Solution(object):
         if l!=None and r!=None:
             return root
         return l or r
-        
-            
