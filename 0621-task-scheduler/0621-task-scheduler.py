@@ -1,22 +1,8 @@
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        count=Counter(tasks) #Counter() is a hashmap to count elements inbuilt in python
-        maxHeap=[-cnt for cnt in count.values()] #-cnt is because max heap in python is done by negating min heap
-        heapq.heapify(maxHeap) #creating a heap
-        
-        time=0
-        q=deque() #pair of values [-cnt, idleTime]
-        while maxHeap or q:
-            time+=1
-            if maxHeap:
-                cnt=1+heapq.heappop(maxHeap)
-                if cnt:
-                    q.append([cnt,time+n]) #n=idletime
-            if q and q[0][1]==time:
-                heapq.heappush(maxHeap, q.popleft()[0])
-        return time
-               
+        task_count = collections.Counter(tasks)
+        max_count = max(task_count.values())
+        max_tasks = sum(1 for count in task_count.values() if count == max_count)
+        total_slots = (max_count - 1) * (n + 1) + max_tasks
+        return max(total_slots, len(tasks))
                 
-                
-        
-        
