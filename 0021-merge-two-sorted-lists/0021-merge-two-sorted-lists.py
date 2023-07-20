@@ -18,4 +18,3 @@ class Solution:
         curr.next=l1 or l2
         return dummy.next
         
-        
