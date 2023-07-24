@@ -1,24 +1,17 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
+        result = []
 
-        @cache
-
-        def dfs(s):
-
-            if not s:
-                return [[]]
-            res=[]
-
-            for i in range(len(s)):
-                sub=s[:i+1]
-                if sub==sub[::-1]:
-                    l=dfs(s[i+1:])
-                    res+=[[sub]+sl for sl in l]
-
+        def backtrace(cur, ind):
+            if ind == len(s):
+                result.append(cur)
+                return
             
-            return res
+            temp = ""
 
-        
-        
-        return dfs(s)
-        
+            for i in range(ind, len(s)):
+                temp += s[i]
+                if temp == temp[::-1]:
+                    backtrace(cur + [temp], i + 1)
+        backtrace([], 0)
+        return result
