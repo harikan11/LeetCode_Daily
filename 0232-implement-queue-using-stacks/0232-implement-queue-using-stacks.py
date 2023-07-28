@@ -9,6 +9,7 @@ class MyQueue:
     def pop(self) -> int:
         if len(self.queue)>0:
             return self.queue.pop(0)
+        
 
     def peek(self) -> int:
         return self.queue[0]
@@ -17,8 +18,6 @@ class MyQueue:
         if self.queue==[]:
             return True
         return False
-            
-        
 
 
 # Your MyQueue object will be instantiated and called as such:
