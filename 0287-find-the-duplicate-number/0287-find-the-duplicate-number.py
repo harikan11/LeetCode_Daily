@@ -1,16 +1,12 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        slow,fast=0,0
-        while True:
-            slow=nums[slow]
-            fast=nums[nums[fast]]
-            if slow==fast:
-                break
-        
-        slow1=0
-        while True:
-            slow=nums[slow]
-            slow1=nums[slow1]
-            if slow==slow1:
-                break
-        return slow
+        hashmap={}
+        for i,v in enumerate(nums):
+            if v not in hashmap:
+                hashmap[v]=1
+            else:
+                hashmap[v]+=1
+        for key,value in hashmap.items():
+            if value>1:
+                return key
+                
