@@ -1,17 +1,19 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        ans=[]
-        def dfs(l:int, r:int, s:str) -> None:
-            if l==0 and r==0:
-                ans.append(s)
-            if l>0:
-                dfs(l-1,r,s+'(')
-            if l<r:
-                dfs(l,r-1,s+')')
-        dfs(n,n,'')
-        return ans
-                
-       
-      
-        
+        stack=[]
+        res=[]
+        def backtrack(openn,closen):
+            if openn==closen==n:
+                res.append("".join(stack))
+                return
+            if openn<n:
+                stack.append("(")
+                backtrack(openn+1,closen)
+                stack.pop()
+            if closen<openn:
+                stack.append(")")
+                backtrack(openn,closen+1)
+                stack.pop()
+        backtrack(0,0)
+        return res
             
