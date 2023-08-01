@@ -1,5 +1,12 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        nums.sort()
-        return nums[len(nums)//2]
-            
+        d=dict()
+        k=len(nums)//2
+        for i in nums:
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+        for i in nums:
+            if d[i]>k:
+                return i
