@@ -5,37 +5,27 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        if not head:
-            return False
+        fast=head
+        slow=head
+        #to find middle node(slow)
+        while fast and fast.next:
+            fast=fast.next.next
+            slow=slow.next
         
-        pcounter=head
-        countNodes=0
-        while (pcounter):
-            countNodes+=1
-            pcounter = pcounter.next
-            
-        p1=head
-        p2=head
-        elements=[]
-        for i in range(countNodes//2):
-            elements.append(p2.val)
-            p2=p2.next
-         
-        if (countNodes%2!=0):
-            p2=p2.next
-            
-        while(p2):
-            if (not elements or p2.val!=elements.pop()):
+        #to reverse
+        prev=None
+        while slow:
+            temp=slow.next
+            slow.next=prev
+            prev=slow  #slow is curr in reversal of LL problem
+            slow=temp
+        
+        #to check if palindrome
+        left=head
+        right=prev  #slow is Null and prev is just one node behind it
+        while right:
+            if left.val!=right.val:
                 return False
-            p2=p2.next
+            left=left.next
+            right=right.next
         return True
-            
-        
-
-            
-        
-            
-            
-            
-            
-        
