@@ -7,14 +7,14 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if not root or not p or not q:
-            return None
-        node = root
-        while node:
-            if max(p.val, q.val) < node.val:
-                node = node.left
-            elif min(p.val, q.val) > node.val:
-                node = node.right
-            else:
-                return node
-        return 
+        cur=root
+        while cur:
+            if p.val>cur.val and q.val>cur.val:
+                cur=cur.right
+            elif p.val<cur.val and q.val<cur.val:
+                cur=cur.left
+            else: 
+                return cur #split occurs here
+            
+                
+                
