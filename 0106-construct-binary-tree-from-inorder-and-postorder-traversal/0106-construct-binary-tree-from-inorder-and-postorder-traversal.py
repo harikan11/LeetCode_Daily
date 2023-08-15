@@ -6,9 +6,9 @@
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        #recursive solution
         if not inorder:
             return None
+        #postorder is left-right-root and inorder is left-root-right
         root=TreeNode(postorder.pop())
         mid=inorder.index(root.val)
         root.right=self.buildTree(inorder[mid+1:],postorder)
