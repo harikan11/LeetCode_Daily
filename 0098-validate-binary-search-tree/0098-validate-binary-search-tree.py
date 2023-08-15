@@ -4,16 +4,13 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        
-        def helper(node, low, high):
-            if not node:
+        def BST(root,mx,mi):
+            if not root:
                 return True
-            if not (low < node.val < high):
+            elif root.val>=mx or root.val<=mi:
                 return False
-            return helper(node.left, low, node.val) and helper(node.right, node.val, high)
-        
-        return helper(root, -inf, inf)
-    
+            else:
+                return BST(root.left,root.val,mi) and BST(root.right,mx,root.val)
+        return BST(root,float('inf'),float('-inf'))
