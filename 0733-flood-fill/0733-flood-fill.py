@@ -25,4 +25,3 @@ class Solution:
             self.helper(image, i - 1, j, old_color, new_color)            
             self.helper(image, i + 1, j, old_color, new_color)
         
-    
