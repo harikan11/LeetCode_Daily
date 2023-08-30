@@ -14,6 +14,3 @@ class Solution:
                         nums[k], nums[j] = nums[j], nums[k]
                         return nums
         return nums.reverse()
-        
-            
-        
