@@ -7,5 +7,3 @@ class Solution:
             while i<len(original):
                 output.append(original[i:(i:=i+n)])
             return output
-       
-            
