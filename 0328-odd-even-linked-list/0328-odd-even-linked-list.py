@@ -5,30 +5,16 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next or not head.next.next:
-            return head
-        
-        oddptr=curr=head
-        evenptr=evenhead=head.next
-        i=1
-        
-        while curr:
-            if i>2 and i%2!=0:
-                oddptr.next=curr
-                oddptr=oddptr.next
-            elif i>2 and i%2==0:
-                evenptr.next=curr
-                evenptr=evenptr.next
-            curr=curr.next
-        
-            i+=1
+        if not head:
+            return None
+        odd=head
+        evenhead=even=head.next #evenhead is used to connect last odd node with even node
+        while even and even.next: #odd always exists since first node, and next odd node is even.next
+            odd.next=odd.next.next #old odd connected to new odd
+            odd=odd.next
             
-        evenptr.next=None
-        
-        oddptr.next=evenhead
+            even.next=even.next.next #old even connected to new even
+            even=even.next
+        odd.next=evenhead #last odd node connected to evenhead
         
         return head
-        
-                
-        
-        
