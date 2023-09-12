@@ -4,18 +4,14 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        height = 0
-
-        def calHeight(root, height):
-            
-            if root is None:
-                return height
-
-            lheight = calHeight(root.left, height+1)
-            rheight = calHeight(root.right, height+1)
-            return max(lheight, rheight)
-
-        height = calHeight(root, height)
-        return height
+class Solution(object):
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if(root==None):
+            return 0
+        right = self.maxDepth(root.right) #this is for moving to the depth of right tree
+        left = self.maxDepth(root.left)  # this is for moving to the depth of left tree
+        return 1+max(right,left)
